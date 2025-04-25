@@ -3,7 +3,7 @@ import { createConnection } from '$lib/db/mysql';
 
 
 export async function GET({ params }) {
-	const { uuid } = params; 
+	const { uuid } = params; // Get the UUID (article ID) from the route parameters
 	const connection = await createConnection();
 
 	const [rows] = await connection.execute('SELECT * FROM articles WHERE id = ?', [uuid]);

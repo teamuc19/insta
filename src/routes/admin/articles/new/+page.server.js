@@ -4,11 +4,11 @@ import { put } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
 export async function load({ locals }) {
-
+// Check if the user is logged in and has admin rights
 	if (!locals.user || locals.user.role !== 'admin') {
 		throw error(403, 'Not allowed');
 	}
-  // Add your load function logic if needed
+ 
 }
 
 export const actions = {

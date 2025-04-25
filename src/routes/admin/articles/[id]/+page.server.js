@@ -1,5 +1,3 @@
-
-
 import { createConnection } from "$lib/db/mysql";
 
 export async function load({ params }) {
@@ -30,6 +28,9 @@ export const actions = {
 		await connection.execute('update articles set votes = votes + 1 where id = ?',[articleID]);
 
 	},
+    
+    // It takes the name, text, and article ID from the submitted form,
+	// then inserts the comment into the 'comments' table in the database.
 	writeComment: async ({ request }) => {
 		const formData = await request.formData();
 

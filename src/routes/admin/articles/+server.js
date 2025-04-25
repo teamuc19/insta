@@ -5,6 +5,8 @@ export async function GET({ params }) {
 	const { uuid } = params;
 	const connection = await createConnection();
 
+
+	// Fetch the top 25 articles ordered by vote count (most voted first)
 	const [rows] = await connection.execute('SELECT * FROM articles order by votes desc limit 25');
 
 
