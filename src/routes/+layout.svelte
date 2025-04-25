@@ -20,7 +20,7 @@
 
     {#if data.user}
 		<form action="/logout?/logout" method="POST">
-      <button type="submit" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+      <button type="submit" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-white hover:bg-blue-500">
         Logout
       </button>
     </form>

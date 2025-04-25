@@ -1,8 +1,13 @@
 
 import { createConnection } from "$lib/db/mysql";
+import { error } from "@sveltejs/kit";
 
 export async function load( { locals }){
     const connection = await createConnection();
+
+    if (!locals.user || locals.user.role !== 'admin') {
+		throw error(403, 'Not allowed');
+	}
 
     let [ articleRows] = await connection.execute('select * from articles');
 

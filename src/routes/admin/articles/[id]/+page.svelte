@@ -1,39 +1,41 @@
 <script>
-	let { data,form } = $props();
+	let { data, form } = $props();
 </script>
 
 <div class="mx-auto max-w-3xl space-y-10 px-4 py-8">
 	{#each data.articles as article}
-		<div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+		<div class="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
 			<img
 				src={article.image}
 				alt=""
 				class="mb-4 w-full rounded-md object-cover"
 			/>
 
-            {#each data.comments as comment}
-            {#if article.id == comment.article_id}
-            <div>
-                <h1>{comment.name}</h1>
-                <p>{comment.text}</p>
-
-            </div>
-            {/if}
-            {/each}
-
 			<h2 class="text-xl font-semibold text-gray-800 mb-2">{article.author}</h2>
 			<p class="text-gray-700 mb-1">{article.description}</p>
 			<p class="text-sm text-gray-400 mb-4">Votes: {article.votes}</p>
 
-			<!-- Like Form -->
+			<!-- 💬 All Comments -->
+			<div class="mt-6 border-t border-gray-100 pt-4">
+				<h3 class="mb-3 text-lg font-semibold text-gray-800">💬 Comments</h3>
+				{#each data.comments as comment}
+					{#if comment.article_id === article.id}
+						<div class="mb-4 rounded-md border border-gray-100 bg-gray-50 p-3 shadow-sm">
+							<p class="text-sm font-medium text-gray-700">{comment.name}</p>
+							<p class="text-sm text-gray-600">{comment.text}</p>
+						</div>
+					{/if}
+				{/each}
+			</div>
+
+			<!-- ❤️ Like Form -->
 			<form
 				name="like"
-				action="/like"
+				action="?/like"
 				method="POST"
-				class="space-y-3 border-t border-gray-100 pt-4"
+				class="mt-6 border-t border-gray-100 pt-4 space-y-3"
 			>
 				<input type="hidden" name="id" value={article.id} />
-
 				<button
 					type="submit"
 					class="rounded-md bg-green-600 px-4 py-2 text-white transition hover:bg-green-700"
@@ -42,12 +44,12 @@
 				</button>
 			</form>
 
-			<!-- Comment Form -->
+			<!-- ✍️ Comment Form -->
 			<form
 				name="writeComment"
 				action="?/writeComment"
 				method="POST"
-				class="space-y-4 border-t border-gray-100 pt-6 mt-6"
+				class="mt-6 space-y-4 border-t border-gray-100 pt-6"
 			>
 				<input type="hidden" name="articleID" value={article.id} />
 
