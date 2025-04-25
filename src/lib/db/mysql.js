@@ -1,14 +1,19 @@
+
 import mysql from 'mysql2/promise';
+import { DB_HOST, DB_USER, DB_PORT, DB_PASSWORD, DB_NAME } from '$env/static/private';
 
 let connection = null;
+
+
+
 export function createConnection() {
 	if (!connection) {
 		connection = mysql.createConnection({
-			host: 'htl-projekt.com',
-			user: 'teamucmeraj',
-			port: 3306,
-			password: '!Insy_2024$',
-			database: '2024_4aw_teamucmeraj_image_blog'
+			host: DB_HOST,
+			user: DB_USER,
+			port: DB_PORT,
+			password: DB_PASSWORD,
+			database: DB_NAME
 		});
 	}
 	return connection;
