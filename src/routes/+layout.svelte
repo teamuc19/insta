@@ -7,25 +7,40 @@
   
   <div class="min-h-screen flex flex-col font-sans">
 
-	<header class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
-		<a href="/" class="text-lg font-bold">📷 ImageBlog</a>
-		<nav class="space-x-4 text-sm">
-		  <a href="/" class="hover:text-gray-300">Home</a>
-		  <a href="/admin/articles" class="hover:text-gray-300">Admin</a>
-		</nav>
-    {#if !data.user}
-		<a href="/login">Login</a>
-    <a href="/register">register</a>
-    {/if}
-
-    {#if data.user}
-		<form action="/logout?/logout" method="POST">
-      <button type="submit" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-white hover:bg-blue-500">
-        Logout
-      </button>
-    </form>
-    {/if}
-	  </header>
+    <header class="bg-gray-900 text-white px-6 py-4 shadow-md">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="text-2xl font-bold tracking-tight hover:text-gray-300">
+          📷 ImageBlog
+        </a>
+    
+        <!-- Navigation Links -->
+        <nav class="flex items-center space-x-6 text-sm">
+          <a href="/" class="hover:text-gray-300 transition">Home</a>
+          <a href="/admin/articles" class="hover:text-gray-300 transition">Admin</a>
+        </nav>
+    
+        <!-- Auth Links -->
+        <div class="flex items-center space-x-4 mt-2 md:mt-0">
+          {#if !data.user}
+            <a href="/login" class="hover:text-gray-300 text-sm">Login</a>
+            <a href="/register" class="hover:text-gray-300 text-sm">Register</a>
+          {/if}
+    
+          {#if data.user}
+            <form action="/logout?/logout" method="POST">
+              <button
+                type="submit"
+                class="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+              >
+                Logout
+              </button>
+            </form>
+          {/if}
+        </div>
+      </div>
+    </header>
+    
     
     <!-- Hauptinhalt -->
     <main class="flex-grow container mx-auto p-6">
