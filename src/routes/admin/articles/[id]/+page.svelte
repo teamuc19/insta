@@ -11,9 +11,15 @@
 				class="mb-4 w-full rounded-md object-cover"
 			/>
 
+            {#each data.comments as comment}
+            {#if article.id == comment.article_id}
             <div>
-                
+                <h1>{comment.name}</h1>
+                <p>{comment.text}</p>
+
             </div>
+            {/if}
+            {/each}
 
 			<h2 class="text-xl font-semibold text-gray-800 mb-2">{article.author}</h2>
 			<p class="text-gray-700 mb-1">{article.description}</p>

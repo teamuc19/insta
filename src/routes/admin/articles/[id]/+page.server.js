@@ -8,8 +8,12 @@ export async function load({ params }) {
     let connection = await createConnection();
     let [rows] = await connection.execute('SELECT * FROM articles where id = ?', [id]);
 
+    let [commentRows] = await connection.execute("select * from comments");
+
+
     return {
-        articles: rows
+        articles: rows,
+        comments: commentRows
     }
 
 }
