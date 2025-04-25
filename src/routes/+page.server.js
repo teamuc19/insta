@@ -11,26 +11,3 @@ export async function load( { locals }){
 }
 
 
-export const actions = {
-
-	like: async ( {request}) =>{
-		const formData = await request.formData();
-		const connection = await createConnection();
-
-		const articleID = await formData.get('id');
-
-		await connection.execute('update articles set votes = votes + 1 where id = ?',[articleID]);
-
-	},
-	dislike: async ( {request}) =>{
-		const formData = await request.formData();
-		const connection = await createConnection();
-
-		const articleID = await formData.get('id');
-
-		await connection.execute('update articles set votes = votes - 1 where id = ?',[articleID]);
-		
-	}
-	
-	
-};
