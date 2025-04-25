@@ -1,5 +1,6 @@
 <script>
 	let { data } = $props();
+	import { enhance } from '$app/forms';
 </script>
 
 <div class="flex flex-col items-center justify-center p-6">
@@ -24,7 +25,7 @@
 				<p><span class="font-semibold text-gray-800">Author:</span> {article.author}</p>
 				<p><span class="font-semibold text-gray-800">Votes:</span> {article.votes}</p>
 
-				<form action="?/delete" method="POST" class="pt-2">
+				<form action="?/delete" method="POST" class="pt-2" use:enhance>
 					<input type="hidden" name="id" value={article.id} />
 					<button
 						type="submit"

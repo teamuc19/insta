@@ -11,7 +11,7 @@
       <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
         <!-- Logo -->
         <a href="/" class="text-2xl font-bold tracking-tight hover:text-gray-300">
-          📷 ImageBlog
+          ImageBlog
         </a>
     
         <!-- Navigation Links -->

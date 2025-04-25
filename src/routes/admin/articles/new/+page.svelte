@@ -35,7 +35,7 @@
 			>
 				Submit Article
 			</button>
-			<a href="/admin/api/article" class="block text-center text-sm text-blue-500 hover:underline">
+			<a href="/admin/articles" class="block text-center text-sm text-blue-500 hover:underline">
 				Back to Articles
 			</a>
 		</form>
