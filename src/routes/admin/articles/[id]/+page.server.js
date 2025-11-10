@@ -1,7 +1,7 @@
 import { createConnection } from "$lib/db/mysql";
 
-export async function load({ params }) {
-    const { id } = params;
+export async function load({ params }) { //die funk wird automatisch von sveltekit aufgerufen, server holt die daten
+    const { id } = params; //extrahiert id aus der url 
  
     let connection = await createConnection();
     let [rows] = await connection.execute('SELECT * FROM articles where id = ?', [id]);
@@ -18,7 +18,7 @@ export async function load({ params }) {
 
 
 export const actions = {
-
+//per mi ba like
 	like: async ( {request}) =>{
 		const formData = await request.formData();
 		const connection = await createConnection();

@@ -9,9 +9,9 @@ export let login = async (email, password) => {
 
     if (users.length === 0) {
         return null;
-    }
+    } //nese ka perdorus ma von vazhdon posht
 
-    // Check password
+    // Check password, krahason pass qe ka dhan useri me at qe asht ndatenbank
     if (!await bcrypt.compare(password, users[0].password_hash)) {
         return null;
     }
@@ -25,6 +25,7 @@ export let login = async (email, password) => {
 
     // Save token
     let [result] = await connection.execute('UPDATE users SET session_token = ?, session_expiration = ? WHERE id = ?', [token, expires, users[0].id]);
+   //nese ska ndodh naj ndryshimm dmth qe ska nji user t ri dmth ska ndrru as row
     if (result.affectedRows === 0) {
         return null;
     }
@@ -77,9 +78,6 @@ export let register = async (email, username, password) => {
     message: 'User created'
     };
     };
-    
-    
-    
     
     
     let hashPassword = async (password) => {

@@ -10,7 +10,8 @@ export async function load({ locals }) {
 	}
  
 }
-
+ //Wenn das Formular mit Methode POST gesendet wird, 
+ // wird diese action ausgeführt.
 export const actions = {
   new: async ({ request }) => {
     let formData = await request.formData();
@@ -27,17 +28,19 @@ export const actions = {
     // Ensure allowOverwrite is set to a boolean value
     const allowOverwrite = true; // or false, depending on your needs
 
+    // Das Bild wird zu Vercel Blob hochgeladen (Cloud-Speicher)
     const { url } = await put('insta-images/' + image.name, image, {
       access: 'public',
       token: BLOB_READ_WRITE_TOKEN,
       allowOverwrite // Use the proper boolean value
     });
 
+    // Die Bild-URL, Beschreibung und Autor werden in die Datenbank gespeichert
     const [result] = await connection.execute(
       'INSERT INTO articles (image, description, author) VALUES (?, ?, ?)',
       [url, description, author]
     );
-
+//kur ka ken e suksesshme
     if (result.affectedRows) {
       redirect(303, '/admin/articles');
     }

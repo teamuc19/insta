@@ -1,9 +1,9 @@
-
 import { createConnection } from "$lib/db/mysql";
 
-export async function load({locals}){
-    let connection = await createConnection();
-    return {
-        user: locals.user
-    }
+export async function load({ locals }) {
+  // user & lang kommen aus hooks.server.js
+  return {
+    user: locals.user,
+    lang: locals.lang ?? "en"
+  };
 }
